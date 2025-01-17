@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
   pgconn.query("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'contacts')", function(err,results) {
     if (err) {
       console.log(err);
-      res.render('index', { error: 'Database connection failure! '+err.stack, contacts: null, title: 'Contact List' });
+      res.render('index', { error: null, contacts: contacts, title: 'Contact List' });
     }
 
     // 'contacts' table does not exist. Show an empty table.
